@@ -17,16 +17,16 @@ namespace Task4
         /// <param name="title">Title must not be empty.</param>
         /// <param name="isbn">International Standard Book Number.</param>
         /// <param name="price">Price must not be negative.</param>
-        public SwitchingUnit(string fertigungs_nr, string kunden_nr, decimal anz_relais)
+        public SwitchingUnit(string FertigungsNr, string KundenNr, decimal MaxAnzRelais)
         {
-            if (string.IsNullOrWhiteSpace(fertigungs_nr)) throw new ArgumentException("Fertigungs Nr. must not be empty.", nameof(fertigungs_nr));
-            if (string.IsNullOrWhiteSpace(kunden_nr)) throw new ArgumentException("Kunden Nr. must not be empty.", nameof(kunden_nr));
-            if ((anz_relais < 0) || (anz_relais > 5)) throw new ArgumentException("Anzahl Relais ist nicht OK", nameof(anz_relais));
+            if (string.IsNullOrWhiteSpace(FertigungsNr)) throw new ArgumentException("Fertigungs Nr. must not be empty.", nameof(FertigungsNr));
+            if (string.IsNullOrWhiteSpace(KundenNr)) throw new ArgumentException("Kunden Nr. must not be empty.", nameof(KundenNr));
+            if ((MaxAnzRelais < 0) || (MaxAnzRelais > 5)) throw new ArgumentException("Anzahl Relais ist nicht OK", nameof(MaxAnzRelais));
 
 
-            FertigungsNr = fertigungs_nr;
-            KundenNr = kunden_nr;
-            MaxAnzRelais = anz_relais;
+            this.FertigungsNr = FertigungsNr;
+            this.KundenNr     = KundenNr;
+            this.MaxAnzRelais = MaxAnzRelais;
             AktRelais = 0;
             ID = GeraeteID.LSG;
         }

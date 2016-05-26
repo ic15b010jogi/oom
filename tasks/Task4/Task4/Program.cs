@@ -59,12 +59,11 @@ namespace Task4
             // 5. deserialize items from "items.json"
             // ... and print Description and Price of deserialized items
             var textFromFile = File.ReadAllText(filename);
-            // Schaffe es nicht das ich keinen Fehler beim Einlesen bekomme ... Brauche zu diesem Thema etwas unterstützung ... 
-            //var itemsFromFile = JsonConvert.DeserializeObject<IItem[]>(textFromFile, settings);
-            //foreach (var x in itemsFromFile)
-            //{
-            //    Console.WriteLine($"{x.GerateBeschreibung} {x.getPB_nr()}");
-            //}
+            var itemsFromFile = JsonConvert.DeserializeObject<IItem[]>(textFromFile, settings);
+            foreach (var x in itemsFromFile)
+            {
+                Console.WriteLine($"{x.GerateBeschreibung} {x.getPB_nr()}");
+            }
         }
     }
 }

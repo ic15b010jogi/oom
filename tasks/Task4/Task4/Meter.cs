@@ -9,23 +9,24 @@ namespace Task4
  	public class PrivatMeter : IItem
 	{
     private decimal pb_nr_tarif;
-    private Tarifmodell Modell;
-
+    
     /// <summary>
     /// Creates a new book object.
 	/// </summary>
 	/// <param name="title">Title must not be empty.</param>
 	/// <param name="isbn">International Standard Book Number.</param>
 	/// <param name="price">Price must not be negative.</param>
-	public PrivatMeter(string fertigungs_nr, string kunden_nr, Tarifmodell modell, GeraeteID id)
+	public PrivatMeter(string FertigungsNr, string KundenNr, Tarifmodell Modell, GeraeteID ID)
         {
-        if (string.IsNullOrWhiteSpace(fertigungs_nr)) throw new ArgumentException("Fertigungs Nr. must not be empty.", nameof(fertigungs_nr));
-        if (string.IsNullOrWhiteSpace(kunden_nr)) throw new ArgumentException("Kunden Nr. must not be empty.", nameof(kunden_nr));
+        if (string.IsNullOrWhiteSpace(FertigungsNr)) throw new ArgumentException("Fertigungs Nr. must not be empty.", nameof(FertigungsNr));
+        if (string.IsNullOrWhiteSpace(KundenNr)) throw new ArgumentException("Kunden Nr. must not be empty.", nameof(KundenNr));
 
-        FertigungsNr = fertigungs_nr;
-        KundenNr     = kunden_nr;
-        ID = id;
-        update_pb_nr(modell);
+        this.FertigungsNr = FertigungsNr;
+        this.KundenNr     = KundenNr;
+        this.ID           = ID;
+        this.Modell       = Modell;
+
+        update_pb_nr(Modell);
         
         }
 
@@ -44,10 +45,15 @@ namespace Task4
     /// </summary>
     public GeraeteID ID { get; private set; }
 
-     /// <summary>
-     /// Geraet ist Installiert 
-     /// </summary>
-     public void Installed()
+    /// <summary>
+    /// Bestimmt die Kunden Nr.
+    /// </summary>
+    public Tarifmodell Modell { get; private set; }
+
+        /// <summary>
+        /// Geraet ist Installiert 
+        /// </summary>
+        public void Installed()
       {
             if (IsInstalled) throw new InvalidOperationException($"Meter {FertigungsNr} ist bereits installiert.");
             IsInstalled = true;
